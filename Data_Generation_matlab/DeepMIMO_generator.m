@@ -10,7 +10,7 @@ function [DeepMIMO_dataset,params]=DeepMIMO_generator(params)
 fprintf(' DeepMIMO Dataset Generation started \n')
 
 % Read scenario parameters
-file_scenario_params=strcat('./RayTracing Scenarios/',params.scenario,'/',params.scenario,'.params.mat');
+file_scenario_params=strcat('./RayTracingScenarios/',params.scenario,'/',params.scenario,'.params.mat');
 load(file_scenario_params)
 
 params.num_BS=num_BS;
@@ -35,9 +35,9 @@ reverseStr = repmat(sprintf('\b'), 1, length(msg));
     
 for t=1:1:params.num_BS
     if sum(t == params.active_BS) ==1
-        filename_DoD=strcat('./RayTracing Scenarios/',params.scenario,'/',params.scenario,'.',int2str(t),'.DoD.mat');
-        filename_CIR=strcat('./RayTracing Scenarios/',params.scenario,'/',params.scenario,'.',int2str(t),'.CIR.mat');
-        filename_Loc=strcat('./RayTracing Scenarios/',params.scenario,'/',params.scenario,'.Loc.mat');
+        filename_DoD=strcat('./RayTracingScenarios/',params.scenario,'/',params.scenario,'.',int2str(t),'.DoD.mat');
+        filename_CIR=strcat('./RayTracingScenarios/',params.scenario,'/',params.scenario,'.',int2str(t),'.CIR.mat');
+        filename_Loc=strcat('./RayTracingScenarios/',params.scenario,'/',params.scenario,'.Loc.mat');
         [TX{t}.channel_params]=read_raytracing(filename_DoD,filename_CIR,filename_Loc,params.num_paths,user_first,user_last); 
  
         count_done=count_done+1;
